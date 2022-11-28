@@ -23,9 +23,27 @@ app.post("/" , function(req,res) {
   var difference = n1 - n2;
   var division = n1 / n2;
   var multiplication = n1 * n2;
+  
   //check if user entered numbers
   if (hasNumber(n1) && hasNumber(n2)) {
-    res.send("the answer is " + sum );
+    //check which button was submitted
+    let inputValue = req.body.submit;
+    switch (inputValue) {
+      case "sum":
+        res.send("the answer is " + sum );
+        break;
+      case "retraction":
+        res.send("the answer is " + difference );
+        break;
+      case "division":
+          res.send("the answer is " + division );
+          break;
+      case "multiplication":
+        res.send("the answer is " + multiplication );
+        break;
+      default:
+        break;
+    }
   } else {
     res.send("please enter valid numbers");
   }
